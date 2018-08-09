@@ -1,19 +1,21 @@
-Grove Temperature sensor SHT35
+Grove UV sensor VEML6070
 ==============
 
-![SHT35](https://github.com/linux-downey/Seeed_SHT35/blob/master/SHT35.png)
+![VEML6070](https://github.com/linux-downey/Seeed_VEML6070/blob/master/VEML6070.png)
 
 Introduction of sensor
 ----------------------------  
-SHT3x-DIS is the next generation of Sensirion’s temperature and humidity sensors. It builds on a new CMOSens® sensor chip that is at the heart of Sensirion’s
-new humidity and temperature platform. 
+VEML6070 is an advanced ultraviolet (UV) light sensor with I2C protocol interface and designed by the CMOS process.  
+It is easily operated via a simple I2C command.  
+EML6070 incorporates a photodiode, amplifiers, and analog / digital circuits into a single chip. 
 
 
 ***
 Usage:
 ==========
 Download all the source files.
->* **exampleS/basic_demo/basic_demo.ino**,This example can get the temprature from the serail.
+>* **exampleS/basic_demo/basic_demo.ino**,This example can get the UV index and UV level from the serial.polling for data.
+>* **examples/INT_mode/INT_mode.ino**,There is a INT pad on the sensor module which connect to ACK pin of VEML6070. You can set UV threshold by 102 steps or 145 steps(only two choises).The INT pin outputs low when the UV value beyond limit.You can attach INT pin to a interrupt pin of host,To improve the efficiency of program operation.
 
 
 Reference:
