@@ -1,7 +1,7 @@
 Grove UV sensor VEML6070
 ==============
 
-![VEML6070](https://github.com/linux-downey/Seeed_VEML6070/blob/master/VEML6070.png)
+![VEML6070](https://user-images.githubusercontent.com/41441945/44912793-f643c380-ad5d-11e8-84e4-b59c15a6b503.png)
 
 Introduction of sensor
 ----------------------------  
