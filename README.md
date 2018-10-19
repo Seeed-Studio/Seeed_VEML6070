@@ -1,8 +1,6 @@
 Grove UV sensor VEML6070
 ==============
 
-![VEML6070](https://github.com/linux-downey/Seeed_VEML6070/blob/master/VEML6070.png)
-
 Introduction of sensor
 ----------------------------  
 VEML6070 is an advanced ultraviolet (UV) light sensor with I2C protocol interface and designed by the CMOS process.  
