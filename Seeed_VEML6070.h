@@ -5,27 +5,41 @@
 #include "Wire.h"
 
 
+#ifndef SEEED_DN_DEFINES
+#define SEEED_DN_DEFINES
+
 #ifdef ARDUINO_SAMD_VARIANT_COMPLIANCE
-  #define SERIAL SerialUSB
+  #define SERIAL_DB SerialUSB
 #else
-  #define SERIAL Serial
+  #define SERIAL_DB Serial
 #endif
 
 
+typedef int            s32;
+typedef long unsigned int   u32;
+typedef short          s16;
+typedef unsigned short u16;
+typedef char           s8;
+typedef unsigned char  u8;
+
+typedef enum	
+{
+    NO_ERROR=0,
+    ERROR_PARAM=-1,
+    ERROR_COMM =-2,
+    ERROR_OTHERS=-128,
+}err_t;
+
+
 #define CHECK_RESULT(a,b)   do{if(a=b)  {    \
-                            SERIAL.print(__FILE__);    \
-                            SERIAL.print(__LINE__);   \
-                            SERIAL.print(" error code =");  \
-                            SERIAL.println(a);                   \
+                            SERIAL_DB.print(__FILE__);    \
+                            SERIAL_DB.print(__LINE__);   \
+                            SERIAL_DB.print(" error code =");  \
+                            SERIAL_DB.println(a);                   \
                             return a;   \
                             }}while(0)
 
-
-typedef int s32;
-typedef long unsigned int u32;
-typedef unsigned char u8;
-typedef unsigned short u16;
-
+#endif
 
 #define ENABLE 1
 #define DISABLE 0
@@ -72,14 +86,6 @@ typedef enum
     FOUR_T=0X0C,
 }integration_time_t;
 
-
-typedef enum
-{
-    NO_ERROR=0,
-    ERROR_PARAM=-1,
-    ERROR_COMM =-2,
-    ERROR_OTHERS=-128,
-}err_t;
 
 
 class VEML6070
