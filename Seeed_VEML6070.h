@@ -55,7 +55,6 @@ typedef enum
 
 
 /*Three IIC address,Different functions are implemented by different addresses*/
-/* F**K!!! */
 #define ENABLE_BIT          0X01
 #define INT_ENABLE_BIT      0X20
 #define THRES_BIT           0X10
