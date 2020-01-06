@@ -1,7 +1,7 @@
 #ifndef _SEEED_VE_H
 #define _SEEED_VE_H
 
-#include "arduino.h"
+#include "Arduino.h"
 #include "Wire.h"
 
 
