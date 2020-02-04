@@ -1,4 +1,4 @@
-Grove UV sensor VEML6070
+Grove UV sensor VEML6070  [![Build Status](https://travis-ci.com/Seeed-Studio/Seeed_VEML6070.svg?branch=master)](https://travis-ci.com/Seeed-Studio/Seeed_VEML6070)
 ==============
 
 Introduction of sensor
