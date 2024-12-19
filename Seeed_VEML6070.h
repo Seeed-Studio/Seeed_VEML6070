@@ -8,12 +8,13 @@
 #ifndef SEEED_DN_DEFINES
 #define SEEED_DN_DEFINES
 
-#ifdef ARDUINO_SAMD_VARIANT_COMPLIANCE
+#ifdef SEEED_XIAO_M0
+    #define SERIAL_DB Serial
+#elif defined(ARDUINO_SAMD_VARIANT_COMPLIANCE)
     #define SERIAL_DB SerialUSB
 #else
     #define SERIAL_DB Serial
 #endif
-
 
 typedef int            s32;
 typedef long unsigned int   u32;
@@ -27,7 +28,7 @@ typedef enum {
     ERROR_PARAM = -1,
     ERROR_COMM = -2,
     ERROR_OTHERS = -128,
-} err_t;
+} veml_err_t;
 
 
 #define CHECK_RESULT(a,b)   do{if(a=b)  {    \
@@ -88,15 +89,15 @@ class VEML6070 {
   public:
     VEML6070();
     ~VEML6070() {}
-    err_t clear_ack();
-    err_t set_cmd_reg();
-    err_t read_step(u16& step);
+    veml_err_t clear_ack();
+    veml_err_t set_cmd_reg();
+    veml_err_t read_step(u16& step);
 
-    err_t init();
-    err_t disable();
-    err_t enable();
-    err_t set_interrupt(bool thre, bool stat);
-    err_t set_integra_time(integration_time_t T);
+    veml_err_t init();
+    veml_err_t disable();
+    veml_err_t enable();
+    veml_err_t set_interrupt(bool thre, bool stat);
+    veml_err_t set_integra_time(integration_time_t T);
     void wait_for_ready();
     RISK_LEVEL convert_to_risk_level(u16 uvs_step);
   private:

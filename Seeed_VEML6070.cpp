@@ -16,15 +16,15 @@ VEML6070::VEML6070() {
 /** clear ACK bit,be used of init or interrupt mode.
 
  * */
-err_t VEML6070::clear_ack() {
-    err_t ret = NO_ERROR;
+veml_err_t VEML6070::clear_ack() {
+    veml_err_t ret = NO_ERROR;
     Wire.requestFrom(addr_ara, 1);
     return ret;
 }
 
 /** Set command register.
  * */
-err_t VEML6070::set_cmd_reg() {
+veml_err_t VEML6070::set_cmd_reg() {
     int ret;
     Wire.begin();
     Wire.beginTransmission(addr_l);
@@ -38,8 +38,8 @@ err_t VEML6070::set_cmd_reg() {
 
 /** Enable the sensor mesurement,default is enable state.
  * */
-err_t VEML6070::enable() {
-    err_t ret = NO_ERROR;
+veml_err_t VEML6070::enable() {
+    veml_err_t ret = NO_ERROR;
     cmd_reg &= ~ENABLE_BIT;
     CHECK_RESULT(ret, set_cmd_reg());
     return ret;
@@ -47,8 +47,8 @@ err_t VEML6070::enable() {
 
 /** Disable the sensor mesurement,enter shutdown mode to save power.
  * */
-err_t VEML6070::disable() {
-    err_t ret = NO_ERROR;
+veml_err_t VEML6070::disable() {
+    veml_err_t ret = NO_ERROR;
     cmd_reg |= ENABLE_BIT;
     CHECK_RESULT(ret, set_cmd_reg());
     return ret;
@@ -58,8 +58,8 @@ err_t VEML6070::disable() {
 
 /** Read step of UV sensor,0~65535
  * */
-err_t VEML6070::read_step(u16& step) {
-    err_t ret = NO_ERROR;
+veml_err_t VEML6070::read_step(u16& step) {
+    veml_err_t ret = NO_ERROR;
     u32 time_out_count = 0;
     step = 0;
     u8 high = 0, low = 0;
@@ -89,8 +89,8 @@ err_t VEML6070::read_step(u16& step) {
 
 /*param thre, the threshold to be set,0-102 steps,1-145 steps,ONLY SUPPORT TWO CONSTANT THRESHOLD,USER CAN'T CUSTOMIZE,F**C!!!*/
 /*param stat,the enable bit,0-disable,1-enable.*/
-err_t VEML6070::set_interrupt(bool thre, bool stat) {
-    err_t ret = NO_ERROR;
+veml_err_t VEML6070::set_interrupt(bool thre, bool stat) {
+    veml_err_t ret = NO_ERROR;
 
     clear_ack();
 
@@ -114,8 +114,8 @@ err_t VEML6070::set_interrupt(bool thre, bool stat) {
 /** The sensor board's RSET = 270kΩ,1/2T=62.25ms,1T=125ms,2T=250ms,4T=500ms.
 
 */
-err_t VEML6070::set_integra_time(integration_time_t T) {
-    err_t ret = NO_ERROR;
+veml_err_t VEML6070::set_integra_time(integration_time_t T) {
+    veml_err_t ret = NO_ERROR;
     switch (T) {
         case HALF_OF_T:
             cmd_reg &= ~HALF_OF_T;
@@ -165,8 +165,8 @@ RISK_LEVEL VEML6070::convert_to_risk_level(u16 uvs_step) {
 }
 
 
-err_t VEML6070::init() {
-    err_t ret = NO_ERROR;
+veml_err_t VEML6070::init() {
+    veml_err_t ret = NO_ERROR;
     CHECK_RESULT(ret, clear_ack());
     CHECK_RESULT(ret, set_cmd_reg());
     return ret;
